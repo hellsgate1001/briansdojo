@@ -10,8 +10,17 @@ class HomeView(FormView):
     form_class = ContactForm
 
     def form_valid(self, form):
+        form.save()
         self.request.session['contact_success'] = True
         return super(HomeView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        for name, field in form.fields.items():
+            if form.errors.get(name, None):
+                form.fields[name].widget.attrs['placeholder'] += ': %s' % '; '.join(form.errors[name])
+                form.fields[name].widget.attrs['class'] = 'error'
+
+        return super(HomeView, self).form_invalid(form)
 
     def get_success_url(self):
         return reverse('home')

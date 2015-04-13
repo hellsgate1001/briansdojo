@@ -355,6 +355,15 @@
 					background: #fff;
 				}
 
+				form input[type="text"].error,
+				form input[type="email"].error,
+				form input[type="password"].error,
+				form select.error,
+				form textarea.error
+				{
+					border-color: rgba(255, 0, 0, 0.75);
+				}
+
 				form textarea
 				{
 					min-height: 14em;

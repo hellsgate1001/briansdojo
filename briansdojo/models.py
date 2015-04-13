@@ -10,12 +10,6 @@ class Project(models.Model):
     def __unicode__(self):
         return self.title
 
-    def save(self):
-        '''
-        Validate we have an image as the ImageField value
-        '''
-        import pdb;pdb.set_trace()
-
 
 class Contact(models.Model):
     sender = models.CharField("Name", max_length=255)
