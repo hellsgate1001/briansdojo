@@ -48,6 +48,7 @@
         <script src="{{ STATIC_URL }}js/skel.min.js"></script>
         <script src="{{ STATIC_URL }}js/skel-layers.min.js"></script>
         <script src="{{ STATIC_URL }}js/init.js"></script>
+        {% block extra_js %}{% endblock extra_js %}
         <noscript>
             <link rel="stylesheet" href="{{ STATIC_URL }}css/skel.css" />
             <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />

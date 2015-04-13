@@ -13,7 +13,7 @@
         </div>
     </section>
 
-    <section id="examples" class="two">
+    <section id="projects" class="two">
         <div class="container">
             <header>
                 <h2>Projects</h2>
@@ -25,7 +25,7 @@
                 {% endif %}
                     <div class="4u">
                         <article class="item">
-                            <a href="{{ project.url }}" class="image fit">{{ project.image }}</a>
+                            <a href="{{ project.url }}" class="image fit"><img src="{{ project.image.url }}" alt="{{ project.title }}" /></a>
                             <header>
                                 <h3>{{ project.title }}</h3>
                                 <p>{{ project.description }}</p>
@@ -38,4 +38,53 @@
             {% endfor %}
         </div>
     </section>
+
+    <section id="about" class="three">
+        <div class="container">
+            <header>
+                <h2>About me</h2>
+            </header>
+            <p>
+                About me goes here.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact" class="four">
+        <div class="container">
+            <header>
+                <h2>Contact</h2>
+            </header>
+            {% if contact_success %}
+            <p id="contact_success">
+                Thanks, your message has been sent. I'll be in touch shortly.
+            </p>
+            {% endif %}
+            <p>
+                <form method="post" action="#">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                    <div class="row 50%">
+                        <div class="6u">{{ form.sender }}</div>
+                        <div class="6u">{{ form.email }}</div>
+                    </div>
+                    <div class="row 50%">
+                        <div class="12u">
+                            {{ form.message}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="12u">
+                            <input type="submit" value="Send Message" />
+                        </div>
+                    </div>
+                </form>
+            </p>
+        </div>
+    </section>
+
 {% endblock main_content %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/global.js"></script>
+{% endblock extra_js %}
