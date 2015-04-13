@@ -1,4 +1,5 @@
 *.pyc
 *.sql
 static/*
+media/*
 .DS_Store

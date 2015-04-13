@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'niqk%)s9xa@y_8&7$31)ai@+%g10*puc7i36k!-iv_1c76jh5n'
+SECRET_KEY = 'jj98pq34nq5v9uu8&n(nI:h4w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'south',
+
+    'briansdojo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,3 +84,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '{root}/static/'.format(root=BASE_DIR)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '{root}/media'.format(root=BASE_DIR)

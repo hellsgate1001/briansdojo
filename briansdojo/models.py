@@ -1,0 +1,17 @@
+from django.db import models
+
+
+class Project(models.Model):
+    title = models.CharField(max_length=50)
+    description = models.TextField()
+    url = models.URLField(max_length=255)
+    image = models.ImageField(upload_to='briansdojo/project/', max_length=255)
+
+    def __unicode__(self):
+        return self.title
+
+    def save(self):
+        '''
+        Validate we have an image as the ImageField value
+        '''
+        import pdb;pdb.set_trace()
