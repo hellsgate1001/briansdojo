@@ -1,11 +1,13 @@
 from django.db import models
 
+from sorl.thumbnail import ImageField
+
 
 class Project(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
     url = models.URLField(max_length=255)
-    image = models.ImageField(upload_to='briansdojo/project/', max_length=255)
+    image = ImageField(upload_to='briansdojo/project/', max_length=255)
 
     def __unicode__(self):
         return self.title
