@@ -88,3 +88,5 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '{root}/static/'.format(root=BASE_DIR)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '{root}/media'.format(root=BASE_DIR)
+
+TEST_RUNNER = "redgreenunittest.django.runner.RedGreenDiscoverRunner"
