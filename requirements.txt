@@ -1,7 +1,11 @@
 Django==1.6.11
+EasyProcess==0.2.1
+ipython==3.1.0
 MySQL-python==1.2.5
 Pillow==2.8.1
+PyVirtualDisplay==0.1.5
+selenium==2.48.0
+sorl-thumbnail==12.2
 South==1.0.2
 Unipath==1.1
-ipython==3.1.0
-sorl-thumbnail==12.2
+wheel==0.24.0
