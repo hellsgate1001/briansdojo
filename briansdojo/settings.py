@@ -68,10 +68,20 @@ WSGI_APPLICATION = 'briansdojo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'briansdojo.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'briansdojo.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'briansdojo',
+        'USER': 'briansdojo',
+        'PASSWORD': get_env_variable('BRIANSDOJO_DB_PASS'),
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
