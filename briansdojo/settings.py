@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+from django.core.exceptions import ImproperlyConfigured
+def get_env_variable(var_name):
+    """ Get the environment variable or return exception """
+    try:
+        return os.environ[var_name]
+    except KeyError as e:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -60,10 +68,20 @@ WSGI_APPLICATION = 'briansdojo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'briansdojo.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'briansdojo.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'briansdojo',
+        'USER': 'briansdojo',
+        'PASSWORD': get_env_variable('BRIANSDOJO_DB_PASS'),
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -83,8 +101,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
+BASE_URL = get_env_variable('BASE_URL')
 STATIC_URL = '/static/'
 STATIC_ROOT = '{root}/static/'.format(root=BASE_DIR)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '{root}/media'.format(root=BASE_DIR)
+
+TEST_RUNNER = "redgreenunittest.django.runner.RedGreenDiscoverRunner"

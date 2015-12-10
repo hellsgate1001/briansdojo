@@ -18,6 +18,8 @@ import django.core.handlers.wsgi
 _application = django.core.handlers.wsgi.WSGIHandler()
 
 def application(environ, start_response):
+    os.environ['BASE_URL'] = environ['BASE_URL']
+    os.environ['BRIANSDOJO_DB_PASS'] = environ['BRIANSDOJO_DB_PASS']
     try:
         return _application(environ, start_response)
     except ImportError:
